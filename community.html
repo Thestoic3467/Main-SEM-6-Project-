@@ -1,0 +1,848 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Website</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file if needed -->
+    <style>
+        /* Add your CSS styles here */
+        /* Styles for navbar */
+        body{
+            margin: 0;
+            padding: 0;
+        }
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: auto;
+    height: 100px;
+}
+
+.navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-item {
+    margin-right: 20px;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Styles for header actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.has-before {
+    position: relative;
+}
+
+.has-before::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Styles for sidebar */
+#sidebar-left, #sidebar-right {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar-user {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: auto;
+}
+
+.username {
+    margin-left: 10px;
+}
+
+/* Styles for footer */
+.footer {
+    background-image: url('images/footer-bg.png');
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.footer-brand {
+    margin-bottom: 20px;
+}
+
+.footer-brand-text {
+    margin-top: 10px;
+}
+
+.address, .footer-link {
+    color: #fff;
+}
+
+.footer-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-list-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.social-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.social-link {
+    color: #fff;
+    margin-right: 10px;
+}
+
+/* Additional styles */
+#content {
+    display: flex;
+}
+
+#main {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#posts-container {
+    margin-bottom: 20px;
+}
+
+.post {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-info .user-avatar {
+    margin-right: 10px;
+}
+
+.post-content {
+    margin-bottom: 10px;
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Style for the profile form */
+#profile-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#profile-form input[type="text"],
+#profile-form input[type="email"],
+#profile-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#profile-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#profile-form button:hover {
+    background-color: #45a049;
+}
+
+#profile-form button:focus {
+    outline: none;
+}
+
+/* Style for the create post form */
+#post-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: vertical;
+}
+
+#post-form input[type="file"] {
+    margin-bottom: 10px;
+}
+
+#post-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#post-form button:hover {
+    background-color: #45a049;
+}
+
+#post-form button:focus {
+    outline: none;
+}
+   /* Style the iframe to fill the entire width */
+   iframe {
+            width: 100%;
+            border: none; /* Remove border */
+        }
+    </style>
+</head>
+<body>
+      <!-- Include the header.html using iframe -->
+  <iframe id="headerFrame" src="header.html" frameborder="0"></iframe>
+    <!----.
+
+    <header class="navbar">
+        <a href="#" class="logo">
+            <img src="images/traininglogo.png" width="auto" height="100" alt="training logo">
+        </a>
+        <ul class="navbar-list">
+            <li class="navbar-item">
+                <a href="index.html" class="navbar-link">Home</a>
+            </li>
+            <li class="navbar-item">
+                <a href="poshan.html" class="navbar-link">Poshan Calculator</a>
+            </li>
+            <li class="navbar-item">
+                <a href="gallery.html" class="navbar-link">Gallery</a>
+            </li>
+            <li class="navbar-item">
+                <a href="news.html" class="navbar-link">News</a>
+            </li>
+            <li class="navbar-item">
+                <a href="community.html" class="navbar-link">Community</a>
+            </li>
+            <li class="navbar-item">
+                <a href="training.html" class="navbar-link">Training</a>
+            </li>
+            <li class="navbar-item">
+                <a href="MPR.html" class="navbar-link">MPR</a>
+            </li>
+            <li class="navbar-item">
+                <a href="contact.html" class="navbar-link">Contact</a>
+            </li>
+            
+        </ul>
+        
+        <div class="header-actions">
+            <a href="https://chat.whatsapp.com/Gv5pyhb8eNK9fjulZQ4kby" class="btn has-before">
+                <span class="span">Join our WhatsApp</span>
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+
+            <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+        </div>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+    </header>
+-->
+    <div id="content">
+        <div id="sidebar-left">
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://images.yourstory.com/cs/wordpress/2017/04/Maneka-Gandhi.jpg?w=1152&fm=auto&ar=2:1&mode=crop&crop=faces" alt="User Avatar">
+                </div>
+                <div class="username">Sonam Desai</div>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://qph.cf2.quoracdn.net/main-qimg-4c18e45d728ad9c3a8bbcfe4f92d16fe-lq" alt="User Avatar">
+                </div>
+                <div class="username">Kareena Kapoor</div>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://qph.cf2.quoracdn.net/main-qimg-f24f2a592f91d82e2ccd0d8c30bbfe6d-lq" alt="User Avatar">
+                </div>
+                <div class="username">Alia Khan</div>
+            </div>
+            <!-- Add more user profiles as needed -->
+        </div>
+
+        <div id="main">
+            <div id="posts-container">
+                <!-- Posts will be loaded here -->
+            </div>
+
+            <div id="post-form">
+                <button id="create-profile-btn" onclick="showProfileForm()">Create Profile</button>
+<!--this is new profile way-->
+                <div id="profile-form" style="display: none;">
+                    <div id="profile-form-content">
+                        <form id="profile-form">
+                            <input type="text" id="name" placeholder="Enter your name" required><br><br>
+                            <input type="text" id="contact" placeholder="Enter your contact number" required><br><br>
+                            <input type="email" id="email" placeholder="Enter your email" required><br><br>
+                            <button type="submit" onclick="submitProfile()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                
+<!--till here -->
+
+
+
+
+                <button id="change-profile-btn" onclick="changeProfile()" style="display: none;">Change Profile</button>
+                <div id="profile-form" style="display: none;">
+                    <form id="profile-form">
+                        <input type="text" id="name" placeholder="Enter your name" required><br><br>
+                        <input type="text" id="contact" placeholder="Enter your contact number" required><br><br>
+                        <input type="email" id="email" placeholder="Enter your email" required><br><br>
+                        <button type="submit" onclick="submitProfile()">Submit</button>
+                    </form>
+                </div>
+                
+                <textarea id="post-content" placeholder="...Share your thoughts..."></textarea>
+                
+                <input type="file" id="file-input" accept="image/*">
+                <button onclick="createPost()">Post</button>
+            </div>
+        </div>
+        
+
+        <div id="sidebar-right">
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://en-media.thebetterindia.com/uploads/2022/12/ws_2_720-1671260096.jpg" alt="User Avatar">
+                </div>
+                <div class="username">Deepika Singh</div>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://indianmasterminds.com/wp-content/uploads/2023/05/o7Fuqo1e.jpg" alt="User Avatar">
+                </div>
+                <div class="username">Aishwarya Sharma</div>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://i.pinimg.com/originals/14/b2/bf/14b2bf7b86f40a2ab944f9988811d575.jpg" alt="User Avatar">
+                </div>
+                <div class="username">Priyanka Patel</div>
+            </div>
+            <!-- Add more user profiles as needed -->
+           </div>
+            
+            
+    </div>
+
+  <!-- Include the footer.html using iframe -->
+  <iframe id="footerFrame" src="footer.html" frameborder="0"></iframe>
+ 
+    <script>
+        var userProfile = null;
+
+        // Function to load posts from local storage
+        function loadPosts() {
+            var savedPosts = JSON.parse(localStorage.getItem('posts'));
+            if (savedPosts) {
+                var postsContainer = document.getElementById("posts-container");
+                postsContainer.innerHTML = savedPosts;
+            }
+        }
+
+        // Function to save posts to local storage
+        function savePosts() {
+            var postsContainer = document.getElementById("posts-container").innerHTML;
+            localStorage.setItem('posts', JSON.stringify(postsContainer));
+        }
+
+        // Load posts when the page is loaded
+        window.addEventListener('load', loadPosts);
+
+        function showProfileForm() {
+            var profileForm = document.getElementById("profile-form");
+            profileForm.style.display = "block";
+            document.getElementById("create-profile-btn").style.display = "none";
+            document.getElementById("change-profile-btn").style.display = "inline-block";
+        }
+
+        function submitProfile() {
+            var name = document.getElementById("name").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+
+            // Store user profile
+            userProfile = { name: name, contact: contact, email: email };
+
+            // Display the name in the sidebar
+            var sidebarRight = document.getElementById("sidebar-right");
+            var userDiv = document.createElement("div");
+            userDiv.classList.add("sidebar-user");
+            userDiv.innerHTML = `
+                <div class="user-avatar">
+                    <img src="https://i.pinimg.com/originals/14/b2/bf/14b2bf7b86f40a2ab944f9988811d575.jpg" alt="User Avatar">
+                </div>
+                <div class="username">${name}</div>
+            `;
+            sidebarRight.appendChild(userDiv);
+
+            // Hide the profile form
+            var profileForm = document.getElementById("profile-form");
+            profileForm.style.display = "none";
+
+            // Clear the input fields
+            document.getElementById("name").value = "";
+            document.getElementById("contact").value = "";
+            document.getElementById("email").value = "";
+
+            // Prevent form submission
+            return false;
+        }
+
+        function changeProfile() {
+            var profileForm = document.getElementById("profile-form");
+            profileForm.style.display = "block";
+            document.getElementById("create-profile-btn").style.display = "none";
+            document.getElementById("change-profile-btn").style.display = "none";
+        }
+
+        function createPost() {
+            var postContent = document.getElementById("post-content").value;
+            var fileInput = document.getElementById("file-input");
+            var files = fileInput.files;
+
+            // Create a new post element
+            var postElement = document.createElement("div");
+            postElement.classList.add("post");
+
+            // Add user info
+            var userInfo = document.createElement("div");
+            userInfo.classList.add("user-info");
+            userInfo.innerHTML = `
+                <div class="user-avatar">
+                    <img src="https://i.pinimg.com/originals/14/b2/bf/14b2bf7b86f40a2ab944f9988811d575.jpg" alt="User Avatar">
+                </div>
+                <div class="username">${userProfile ? userProfile.name : "You"}</div>
+            `;
+            postElement.appendChild(userInfo);
+
+            // Add post content
+            var contentElement = document.createElement("p");
+            contentElement.classList.add("post-content");
+            contentElement.textContent = postContent;
+            postElement.appendChild(contentElement);
+
+            // Add media files
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var mediaElement;
+
+                if (file.type.startsWith("image/")) {
+                    mediaElement = document.createElement("img");
+                    mediaElement.src = URL.createObjectURL(file);
+                }
+
+                mediaElement.classList.add("post-image");
+                postElement.appendChild(mediaElement);
+            }
+
+            // Add post to the top of the posts container
+            var postsContainer = document.getElementById("posts-container");
+            var firstPost = postsContainer.firstChild;
+            if (firstPost) {
+                postsContainer.insertBefore(postElement, firstPost);
+            } else {
+                postsContainer.appendChild(postElement);
+            }
+
+            // Save posts to local storage
+            savePosts();
+
+            // Clear input fields
+            document.getElementById("post-content").value = "";
+            fileInput.value = "";
+        }
+    </script>
+
+<script> 
+// Function to handle changing the profile photo
+function changeProfilePhoto() {
+    var newPhotoUrl = prompt("Enter the URL of your new profile photo:");
+    if (newPhotoUrl) {
+        document.getElementById("user-avatar-img").src = newPhotoUrl;
+    }
+}
+</script>
+<script> 
+
+// Function to handle changing the profile photo
+function changeProfilePhoto() {
+    var newPhotoUrl = prompt("Enter the URL of your new profile photo:");
+    if (newPhotoUrl) {
+        document.getElementById("user-avatar-img").src = newPhotoUrl;
+    }
+}
+
+// Function to handle changing the profile name
+function changeProfileName() {
+    var newName = prompt("Enter your new name:");
+    if (newName) {
+        document.getElementById("username").textContent = newName;
+    }
+}
+</script>
+
+
+
+<script>
+// Frontend JavaScript
+
+// Function to create a user profile
+function createUserProfile() {
+    // Get user input from the form
+    const name = document.getElementById('name').value;
+    const contact = document.getElementById('contact').value;
+    const email = document.getElementById('email').value;
+
+    // Send a POST request to the backend server
+    fetch('/create-profile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, contact, email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display success message to the user
+        alert(data.message);
+    })
+    .catch(error => {
+        console.error('Error creating profile:', error);
+        // Display error message to the user
+        alert('An error occurred while creating your profile. Please try again.');
+    });
+}
+
+
+
+</script>
+<script>
+// Backend Node.js (using Express.js)
+
+const express = require('express');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
+
+const app = express();
+const port = 3000;
+
+// Configure Nodemailer with your SMTP settings
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'your-email@gmail.com',
+        pass: 'your-email-password'
+    }
+});
+
+// Endpoint to handle profile creation requests
+app.post('/create-profile', (req, res) => {
+    // Generate a random password
+    const newPassword = generateRandomPassword();
+    
+    // Send the password via email
+    sendPasswordByEmail(req.body.email, newPassword);
+
+    // Respond with a success message
+    res.json({ message: 'Your profile has been created. Please check your email for the password.' });
+});
+
+// Function to generate a random password
+function generateRandomPassword() {
+    return crypto.randomBytes(8).toString('hex'); // Generate an 8-character random hexadecimal string
+}
+
+// Function to send password via email
+function sendPasswordByEmail(email, password) {
+    const mailOptions = {
+        from: 'your-email@gmail.com',
+        to: email,
+        subject: 'Your new password',
+        text: `Your new password is: ${password}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log('Error sending email:', error);
+        } else {
+            console.log('Email sent:', info.response);
+        }
+    });
+}
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${3000}`);
+});
+
+
+</script>
+<script>
+    // Function to add a new user to the sidebar with photo
+function addUserToSidebar(name, photoURL) {
+    // Create a new sidebar user element
+    const userDiv = document.createElement('div');
+    userDiv.classList.add('sidebar-user');
+    userDiv.innerHTML = `
+        <div class="user-avatar">
+            <img src="${photoURL}" alt="User Avatar">
+        </div>
+        <div class="username">${name}</div>
+    `;
+
+    // Append the new user element to the sidebar
+    const sidebar = document.getElementById('sidebar');
+    sidebar.appendChild(userDiv);
+}
+
+</script>
+<script>
+
+addUserToSidebar(userName, photoURL);
+
+</script>
+
+<script>
+    // Function to handle profile photo and name change
+function handleProfileEdit() {
+    // Get the user's current name and photo
+    const name = document.querySelector('.username').textContent.trim();
+    const photoURL = document.querySelector('.user-avatar img').src;
+
+    // Prompt the user to enter a new name
+    const newName = prompt('Enter your new name:', name);
+
+    // If the user entered a new name, update the sidebar and profile name
+    if (newName !== null && newName.trim() !== '') {
+        document.querySelector('.username').textContent = newName.trim();
+        // Here, you can update the profile name in the database if needed
+
+        // Prompt the user to enter a new photo URL
+        const newPhotoURL = prompt('Enter your new photo URL:', photoURL);
+
+        // If the user entered a new photo URL, update the profile photo
+        if (newPhotoURL !== null && newPhotoURL.trim() !== '') {
+            document.querySelector('.user-avatar img').src = newPhotoURL.trim();
+            // Here, you can update the profile photo in the database if needed
+        }
+    }
+}
+
+// Add event listener to the profile photo to trigger profile edit
+document.querySelector('.user-avatar').addEventListener('click', handleProfileEdit);
+
+</script>
+
+<script>
+function showProfileForm() {
+    var profileForm = document.getElementById("profile-form");
+    profileForm.style.display = "block";
+
+    // Add input field for profile photo link dynamically
+    var profileFormContent = document.getElementById("profile-form-content");
+    var profilePhotoInput = document.createElement("input");
+    profilePhotoInput.type = "url";
+    profilePhotoInput.id = "profile-photo";
+    profilePhotoInput.placeholder = "Enter link to your profile photo";
+    profileFormContent.appendChild(profilePhotoInput);
+}
+
+function submitProfile() {
+    var name = document.getElementById("name").value;
+    var contact = document.getElementById("contact").value;
+    var email = document.getElementById("email").value;
+    var profilePhoto = document.getElementById("profile-photo").value;
+
+    // Store user profile
+    userProfile = { name: name, contact: contact, email: email, profilePhoto: profilePhoto };
+
+    // Display the name in the sidebar with profile photo
+    var sidebarRight = document.getElementById("sidebar-right");
+    var userDiv = document.createElement("div");
+    userDiv.classList.add("sidebar-user");
+    userDiv.innerHTML = `
+        <div class="user-avatar">
+            <img src="${profilePhoto}" alt="User Avatar">
+        </div>
+        <div class="username">${name}</div>
+    `;
+    sidebarRight.appendChild(userDiv);
+
+    // Hide the profile form
+    var profileForm = document.getElementById("profile-form");
+    profileForm.style.display = "none";
+
+    // Clear the input fields
+    document.getElementById("name").value = "";
+    document.getElementById("contact").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("profile-photo").value = "";
+
+    // Prevent form submission
+    return false;
+}
+
+
+</script>
+<script>
+
+function createPost() {
+    var postContent = document.getElementById("post-content").value;
+    var fileInput = document.getElementById("file-input");
+    var files = fileInput.files;
+
+    // Create a new post element
+    var postElement = document.createElement("div");
+    postElement.classList.add("post");
+
+    // Add user info with profile photo
+    var userInfo = document.createElement("div");
+    userInfo.classList.add("user-info");
+    userInfo.innerHTML = `
+        <div class="user-avatar">
+            <img src="${userProfile.profilePhoto}" alt="User Avatar">
+        </div>
+        <div class="username">${userProfile ? userProfile.name : "You"}</div>
+    `;
+    postElement.appendChild(userInfo);
+
+    // Add post content
+    var contentElement = document.createElement("p");
+    contentElement.classList.add("post-content");
+    contentElement.textContent = postContent;
+    postElement.appendChild(contentElement);
+
+    // Add media files
+    for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var mediaElement;
+
+        if (file.type.startsWith("image/")) {
+            mediaElement = document.createElement("img");
+            mediaElement.src = URL.createObjectURL(file);
+        }
+
+        mediaElement.classList.add("post-image");
+        postElement.appendChild(mediaElement);
+    }
+
+    // Add post to the top of the posts container
+    var postsContainer = document.getElementById("posts-container");
+    var firstPost = postsContainer.firstChild;
+    if (firstPost) {
+        postsContainer.insertBefore(postElement, firstPost);
+    } else {
+        postsContainer.appendChild(postElement);
+    }
+
+    // Save posts to local storage
+    savePosts();
+
+    // Clear input fields
+    document.getElementById("post-content").value = "";
+    fileInput.value = "";
+}
+
+</script>
+<!--script for footer -->
+<script>
+    window.onload = function() {
+        // Get the height of the content in footer.html
+        var iframe = document.getElementById('footerFrame');
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        var height = iframeDocument.body.scrollHeight;
+
+        // Set the height of the iframe to accommodate the content
+        iframe.style.height = height + 'px';
+    }
+</script>
+ 
+</body>
+</html>

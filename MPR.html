@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activities Conducted in this month</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Truculenta:opsz,wght@12..72,100..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Mohave:ital,wght@0,300..700;1,300..700&family=Oswald:wght@200..700&family=Truculenta:opsz,wght@12..72,100..900&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        /* fisrtfont */
+        font-family: "Oswald", sans-serif;
+        /* second font */
+        font-family: "Truculenta", sans-serif;
+        /* third font */
+        font-family: "Mohave", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        box-sizing: border-box;
+      }
+
+      .Mpr-Head {
+        height: 4rem;
+        width: 100%;
+        background-color: #56b49e;
+        color: #f4f2ec;
+        font-size: 2.5rem;
+        font-family: "Truculenta", sans-serif;
+        font-weight: Bolder;
+        text-align: center;
+        line-height: 4rem;
+      }
+      .Data_nav ul {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style-type: none;
+        font-size: 1.2rem;
+      }
+      .Data_nav ul li:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #56b49e;
+      }
+      .Activity-Heading {
+        background-color: #f4f2ec;
+        height: 3rem;
+        text-align: center;
+        line-height: 3rem;
+        font-size: 2rem;
+        font-family: "Mohave", sans-serif;
+        color: #dc5665;
+      }
+
+      #activityForm {
+        width: 100%;
+        height: 80vh;
+        font-weight: lighter;
+        font-family: "Truculenta", sans-serif;
+        letter-spacing: 0.1px;
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+      .require {
+        color: red;
+      }
+      #activityBox {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        margin-top: 5rem;
+      }
+
+      #activityForm input {
+        all: unset;
+        width: 30rem;
+        height: 2.5rem;
+        outline: 1px solid rgb(118, 118, 118);
+        border-radius: 0.5rem;
+        background-color: #cccccc8a;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+      #activityForm select {
+        all: unset;
+        width: 30rem;
+        height: 2.5rem;
+        outline: 1px solid rgb(118, 118, 118);
+        border-radius: 0.5rem;
+        background-color: #cccccc8a;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+      #activityForm input[type="submit"] {
+        all: unset;
+        background-color: #dc5665;
+        width: 20rem;
+        height: 3rem;
+        border-radius: 0.5rem;
+        position: absolute;
+        top: 80%;
+        left: 40%;
+        font-family: "Oswald", sans-serif;
+        text-align: center;
+        font-weight: 500;
+      }
+      label {
+        font-weight: bold;
+        padding: 0.3rem;
+      }
+
+      #activityForm input::placeholder {
+        font-size: 1rem;
+        color: black;
+        font-weight: 400;
+      }
+      #activity-table-style {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+      }
+      #activityData-head {
+        background-color: #f4f2ec;
+        height: 4rem;
+        width: 100%;
+        text-align: center;
+        line-height: 4rem;
+        font-size: 3rem;
+        font-family: "Mohave", sans-serif;
+        color: #dc5665;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      tr,
+      td {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+        cursor: pointer;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      /* pregnant Styling */
+      .mainWomenDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .pregnantActivity {
+        font-size: 1.5rem;
+      }
+      .pregaButton {
+        all: unset;
+        text-align: center;
+        margin-top: 3rem;
+        margin-left: 2rem;
+        width: 25rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        background-color: #dc5665;
+        color: white;
+      }
+      #PregnantStyling {
+        width: 100%;
+        height: 100vh;
+      }
+      #pregnant_form {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+      }
+      #pregnant_form input[type="text"] {
+        all: unset;
+        width: 30rem;
+        height: 2.5rem;
+        outline: 1px solid rgb(118, 118, 118);
+        border-radius: 0.5rem;
+        background-color: #cccccc8a;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+      #pregnant_form input::placeholder {
+        font-size: 1rem;
+        color: black;
+        font-weight: 400;
+      }
+      .womensActivityCheckBox {
+        width: 80%;
+        max-height: 600px;
+        display: flex !important;
+        justify-content: center;
+        padding: 2rem;
+      }
+      input[type="checkbox"] {
+        position: relative;
+        cursor: pointer;
+      }
+      input[type="checkbox"]:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        background-color: #e9e9e9;
+      }
+      input[type="checkbox"]:checked:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        background-color: #1e80ef;
+      }
+      input[type="checkbox"]:checked:after {
+        content: "";
+        display: block;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 2px;
+        left: 6px;
+      }
+      #newbornForm {
+        width: 100%;
+        height: 100vh;
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .newbornStyling {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+      }
+      #newbornForm input {
+        all: unset;
+        width: 30rem;
+        height: 2.5rem;
+        outline: 1px solid rgb(118, 118, 118);
+        border-radius: 0.5rem;
+        background-color: #cccccc8a;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+      #newbornForm input::placeholder {
+        font-size: 1rem;
+        color: black;
+        font-weight: 400;
+      }
+
+      #newbornForm input[type="submit"] {
+        background-color: #dc5665;
+        text-align: center;
+        width: 25rem;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .deathHeading {
+        width: 100%;
+      }
+      #child_death_form input {
+        all: unset;
+        width: 30rem;
+        height: 2.5rem;
+        outline: 1px solid rgb(118, 118, 118);
+        border-radius: 0.5rem;
+        background-color: #cccccc8a;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+      #child_death_form label {
+        font-size: 1.5rem;
+      }
+      .profile_btn {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        display: block;
+        width: 15%;
+        margin: 1rem;
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+      .profileBTN {
+        text-decoration: none;
+      }
+        /* Style the iframe to fill the entire width */
+   iframe {
+            width: 100%;
+           
+            border: none; /* Remove border */
+        }
+    </style>
+  </head>
+
+  <body>
+        <!-- Include the header.html using iframe -->
+  <iframe id="headerFrame" src="header.html" frameborder="0"></iframe>
+    <p class="Mpr-Head">Monthly Progress Report</p>
+    <div class="Data_nav">
+      <ul>
+        <li>Activity Performed Form</li>
+        <li>Activity Data</li>
+        <li>Pregnant Women's Form</li>
+        <li>Pregnant Womens's Data</li>
+        <li>Newly Born Children Form</li>
+        <li>Newly Born Children Data</li>
+        <li>Children Death Form</li>
+        <li>Children Death Data</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="Activity-Heading">Activities Conducted in this Month-Form</h2>
+      <form id="activityForm" action="#" method="post">
+        <div class="main">
+          <div id="activityBox">
+            <div>
+              <div>
+                <label for="date">Date:<span class="require">*</span></label>
+                <input type="date" id="date" name="date" required />
+              </div>
+              <div>
+                <label for="theme">Theme<span class="require">*</span></label>
+                <select
+                  id="theme"
+                  name="theme"
+                  placeholder="Select Theme"
+                  required
+                >
+                  <option>Select Theme</option>
+                  <option value="1">
+                    Tribal, Traditional, Regional, Local dietary practices
+                    focused sensitization around
+                  </option>
+                  <option value="2">
+                    Health of Pregnant Women and Infant &amp; Young Child
+                    Feeding (IYCF) practices
+                  </option>
+                  <option value="3">
+                    Improving Nutrition through Mission LiFE #Water Conservation
+                    through Rainwater Harvestig (RWH) at AW
+                  </option>
+                  <option value="4">
+                    Improving Nutrition through Mission LiFE #Adopting
+                    Sustainable Food Systems by promoting Millet
+                  </option>
+                  <option value="5">
+                    Improving Nutrition through Mission LiFE #Adopting Healthy
+                    Lifestyles through Ayush practices etc.
+                  </option>
+                  <option value="6">
+                    Focused activities around Water, Sanitation and Hygiene
+                    (WaSH) and Diarrhoea management
+                  </option>
+                  <option value="7">Test, Treat, Talk Anaemia</option>
+                  <option value="8">Swasth Balak Spardha (SBS)</option>
+                  <option value="9">
+                    Overall Nutrition (general sensitisation activities)
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="boys"
+                  >Number of Boys<span class="require">*</span></label
+                >
+                <input
+                  type="number"
+                  id="boys"
+                  name="boys"
+                  placeholder="Number of Boys"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <div>
+                <label for="girls"
+                  >Number of Girls<span class="require">*</span></label
+                >
+                <input
+                  type="number"
+                  id="girls"
+                  name="girls"
+                  placeholder="Number of Girls"
+                  required
+                />
+              </div>
+              <div>
+                <label for="parents"
+                  >Number of Parents<span class="require">*</span></label
+                >
+                <input
+                  type="number"
+                  id="parents"
+                  name="parents"
+                  placeholder="Number Of Parents"
+                  required
+                />
+              </div>
+              <div>
+                <label for="total_beneficiaries"
+                  >Total number of beneficiaries</label
+                >
+                <input
+                  type="number"
+                  id="total_beneficiaries"
+                  name="total_beneficiaries"
+                  required
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="Activitybutton">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+      <div id="activity-table-style">
+        <h2 id="activityData-head">Activities Table</h2>
+        <table id="activityTable">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Date</th>
+              <th>Theme</th>
+              <th>Boys</th>
+              <th>Girls</th>
+              <th>Parents</th>
+              <th>Total Beneficiaries</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="activityTableBody">
+            <!-- Data will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Preganant Womens data -->
+    <div>
+      <h2 class="Activity-Heading" style="margin-top: 4rem">
+        Pregnant Women's Data Entry
+      </h2>
+      <div id="PregnantStyling">
+        <form id="pregnant_form">
+          <div class="detail-prega">
+            <div>
+              <label for="pregnant_first_name"
+                >First Name<span class="require">*</span></label
+              >
+              <input
+                type="text"
+                id="pregnant_first_name"
+                name="pregnant_first_name"
+                required
+                placeholder="First name"
+              />
+            </div>
+            <div>
+              <label for="pregnant_middle_name"
+                >Middle Name<span class="require">*</span></label
+              >
+              <input
+                type="text"
+                id="pregnant_middle_name"
+                name="pregnant_middle_name"
+                placeholder="Middle name"
+              />
+            </div>
+            <div>
+              <label for="pregnant_last_name"
+                >Last Name<span class="require">*</span></label
+              >
+              <input
+                type="text"
+                id="pregnant_last_name"
+                name="pregnant_last_name"
+                required
+                placeholder="Surname"
+              />
+            </div>
+            <div>
+              <button type="submit" class="pregaButton">Submit</button>
+            </div>
+          </div>
+
+          <div class="mainWomenDiv">
+            <label class="pregnantActivity"
+              >Activities Conducted for Pregnant Women<span class="require"
+                >*</span
+              ></label
+            ><br />
+            <div class="womensActivityCheckBox">
+              <div>
+                <input
+                  type="checkbox"
+                  id="activity_1"
+                  name="activities[]"
+                  value="Antenatal Care (ANC) Checkups"
+                />
+                <label for="activity_1">Antenatal Care (ANC) Checkups</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="activity_2"
+                  name="activities[]"
+                  value="Nutritional Counseling"
+                />
+                <label for="activity_2">Nutritional Counseling</label><br />
+                <input
+                  type="checkbox"
+                  id="activity_3"
+                  name="activities[]"
+                  value="Distribution of Nutritional Supplements"
+                />
+                <label for="activity_3"
+                  >Distribution of Nutritional Supplements</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="activity_4"
+                  name="activities[]"
+                  value="Promotion of Breastfeeding"
+                />
+                <label for="activity_4">Promotion of Breastfeeding</label><br />
+                <input
+                  type="checkbox"
+                  id="activity_5"
+                  name="activities[]"
+                  value="Educational Sessions on Maternal Health"
+                />
+                <label for="activity_5"
+                  >Educational Sessions on Maternal Health</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="activity_6"
+                  name="activities[]"
+                  value="Immunization Awareness"
+                />
+                <label for="activity_6">Immunization Awareness</label><br />
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="activity_7"
+                  name="activities[]"
+                  value="Monitoring of High-Risk Pregnancies"
+                />
+                <label for="activity_7"
+                  >Monitoring of High-Risk Pregnancies</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="activity_8"
+                  name="activities[]"
+                  value="Promotion of Institutional Delivery"
+                />
+                <label for="activity_8"
+                  >Promotion of Institutional Delivery</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="activity_9"
+                  name="activities[]"
+                  value="Family Planning Counseling"
+                />
+                <label for="activity_9">Family Planning Counseling</label><br />
+                <input
+                  type="checkbox"
+                  id="activity_10"
+                  name="activities[]"
+                  value="Psychosocial Support"
+                />
+                <label for="activity_10">Psychosocial Support</label><br />
+                <input
+                  type="checkbox"
+                  id="activity_11"
+                  name="activities[]"
+                  value="Community Mobilization for Maternal Health"
+                />
+                <label for="activity_11"
+                  >Community Mobilization for Maternal Health</label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="activity_12"
+                  name="activities[]"
+                  value="Tracking and Monitoring of Pregnant Women's Progress"
+                />
+                <label for="activity_12"
+                  >Tracking and Monitoring of Pregnant Women's Progress</label
+                ><br />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <h2 id="activityData-head">Pregnant Women's Activity Records</h2>
+      <a class="profileBTN" href="Profile.html"
+        ><button class="profile_btn" target="_blank">
+          View Preganant Women Profile
+        </button></a
+      >
+      <table id="pregnant_activity_table">
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Name</th>
+            <th>Activities Performed</th>
+            <th>Total Activities Performed</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="pregnant_activity_table_body">
+          <!-- Data will be populated here -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">Total Pregnant Women:</th>
+            <td><span id="total_pregnant_women">0</span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Newly Born Child Data -->
+    <h2 class="Activity-Heading" style="margin-top: 3rem">
+      Newly Born Children Form
+    </h2>
+    <form id="newbornForm">
+      <div class="newbornStyling">
+        <div>
+          <div>
+            <label for="newborn_first_name">First Name:</label>
+            <input
+              type="text"
+              id="newborn_first_name"
+              name="newborn_first_name"
+              required
+              placeholder="Fisrt Name"
+            />
+          </div>
+          <div>
+            <label for="newborn_mothers_name">Mother's Name:</label>
+            <input
+              type="text"
+              id="newborn_mothers_name"
+              name="newborn_mothers_name"
+              required
+              placeholder="Mother Name"
+            />
+          </div>
+          <div>
+            <label for="newborn_fathers_name">Father's Name:</label>
+            <input
+              type="text"
+              id="newborn_fathers_name"
+              name="newborn_fathers_name"
+              required
+              placeholder="Father Name"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for="newborn_surname">Surname:</label>
+            <input
+              type="text"
+              id="newborn_surname"
+              name="newborn_surname"
+              required
+              placeholder="Surname"
+            />
+          </div>
+          <div>
+            <label for="newborn_date_of_birth">Date of Birth:</label>
+            <input
+              type="date"
+              id="newborn_date_of_birth"
+              name="newborn_date_of_birth"
+              required
+            />
+          </div>
+          <div>
+            <label for="newborn_place_of_birth">Place of Birth:</label>
+            <input
+              type="text"
+              id="newborn_place_of_birth"
+              name="newborn_place_of_birth"
+              required
+              placeholder="Place of Birth"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <div id="tableContainer">
+      <a class="profileBTN" href="ChildProfile.html"
+        ><button class="profile_btn" target="_blank">
+         View NewBorn Profile
+        </button></a
+      >
+      <h2 id="activityData-head">Newly Born Children Data</h2>
+      <div style="width: 100%; height: 100vh">
+        <table id="newbornTable">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Child Name</th>
+              <th>Date of Birth</th>
+              <th>Place of Birth</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="5">
+                Total Children Born: <span id="totalChildrenBorn">0</span>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Death Reprote -->
+    <div
+      style="display: flex; flex-direction: column; width: 100%; height: 100vh"
+    >
+      <h2 class="Activity-Heading deathHeading" style="margin-top: 5rem">
+        Report Child Death Form
+      </h2>
+      <form id="child_death_form" action="#" method="post">
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+          "
+        >
+          <div>
+            <div>
+              <label for="child_name"
+                >Name of the Child<span class="require">*</span></label
+              >
+
+              <input
+                type="text"
+                id="child_name"
+                name="child_name"
+                required
+                placeholder="Place of Death"
+              />
+            </div>
+            <div>
+              <label for="date_of_birth"
+                >Date of Birth<span class="require">*</span></label
+              >
+              <input
+                type="date"
+                id="date_of_birth"
+                name="date_of_birth"
+                required
+              />
+            </div>
+            <div>
+              <label for="date_of_death"
+                >Date of Death<span class="require">*</span></label
+              >
+              <input
+                type="date"
+                id="date_of_death"
+                name="date_of_death"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="place_of_death"
+                >Place of Death<span class="require">*</span></label
+              >
+              <input
+                type="text"
+                id="place_of_death"
+                name="place_of_death"
+                required
+                placeholder="Place of Death"
+              />
+            </div>
+            <div>
+              <label for="age">Age at the Time of Death:</label>
+              <input type="text" id="age_at_death_display" />
+              <!-- <span id="age_at_death_display"></span> -->
+            </div>
+            <div>
+              <label for="reason_of_death">Reason of Death:</label>
+              <textarea
+                id="reason_of_death"
+                name="reason_of_death"
+                rows="4"
+                cols="50"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input
+            type="submit"
+            value="Submit"
+            style="
+              margin-left: 30rem;
+              background-color: #dc5665;
+              color: #fff;
+              font-size: 1.5rem;
+              font-weight: 600;
+              text-align: center;
+              margin-bottom: 10rem;
+            "
+          />
+        </div>
+      </form>
+      <div>
+        <h2 id="activityData-head">Child Death Records</h2>
+        <div style="width: 100%; height: 100vh">
+          <table id="death_records">
+            <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Date of Death</th>
+                <th>Age at Death</th>
+                <th>Place of Death</th>
+                <th>Reason of Death</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Death records will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+ <!-- Include the footer.html using iframe -->
+ <iframe id="footerFrame" src="footer.html" frameborder="0"></iframe>
+ 
+
+
+
+
+    <script>
+      function calculateTotal() {
+        var boys = parseInt(document.getElementById("boys").value) || 0;
+        var girls = parseInt(document.getElementById("girls").value) || 0;
+        var parents = parseInt(document.getElementById("parents").value) || 0;
+        var totalBeneficiaries = boys + girls + parents;
+        document.getElementById("total_beneficiaries").value =
+          totalBeneficiaries;
+        document.getElementById("total_beneficiaries").innerHTML =
+          totalBeneficiaries;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("activityForm");
+        const tableBody = document.getElementById("activityTableBody");
+        let srNo = 1; // Serial number counter
+
+        const openDB = indexedDB.open("ActivityDB", 1);
+
+        openDB.onupgradeneeded = function () {
+          const db = openDB.result;
+          if (!db.objectStoreNames.contains("activities")) {
+            db.createObjectStore("activities", {
+              keyPath: "id",
+              autoIncrement: true,
+            });
+          }
+        };
+
+        openDB.onsuccess = function () {
+          const db = openDB.result;
+
+          // Ensure calculateTotal function is invoked when input values change
+          document
+            .getElementById("boys")
+            .addEventListener("input", calculateTotal);
+          document
+            .getElementById("girls")
+            .addEventListener("input", calculateTotal);
+          document
+            .getElementById("parents")
+            .addEventListener("input", calculateTotal);
+
+          function updateData(id, newData) {
+            const transaction = db.transaction(["activities"], "readwrite");
+            const objectStore = transaction.objectStore("activities");
+            const request = objectStore.put(newData, id);
+
+            request.onsuccess = function (event) {
+              console.log("Data updated successfully");
+            };
+
+            request.onerror = function (event) {
+              console.error("Error updating data:", event.target.error);
+            };
+          }
+
+          function deleteData(id) {
+            const transaction = db.transaction(["activities"], "readwrite");
+            const objectStore = transaction.objectStore("activities");
+            const request = objectStore.delete(id);
+
+            request.onsuccess = function (event) {
+              console.log("Data deleted successfully");
+            };
+
+            request.onerror = function (event) {
+              console.error("Error deleting data:", event.target.error);
+            };
+          }
+
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const rowData = {};
+            formData.forEach((value, key) => {
+              rowData[key] = value;
+            });
+
+            // Generate a UUID for each entry
+            rowData["id"] = generateUUID();
+
+            const totalBeneficiaries =
+              parseInt(rowData["boys"]) +
+              parseInt(rowData["girls"]) +
+              parseInt(rowData["parents"]);
+            rowData["total_beneficiaries"] = totalBeneficiaries;
+
+            const transaction = db.transaction(["activities"], "readwrite");
+            const objectStore = transaction.objectStore("activities");
+            const request = objectStore.add(rowData);
+
+            request.onsuccess = function (event) {
+              console.log("Data saved to IndexDB with ID:", rowData.id);
+
+              const newRow = document.createElement("tr");
+              newRow.innerHTML = `
+                    <td>${srNo++}</td> <!-- Displaying serial number -->
+                    <td>${rowData["date"]}</td>
+                    <td>${getThemeName(rowData["theme"])}</td>
+                    <td>${rowData["boys"]}</td>
+                    <td>${rowData["girls"]}</td>
+                    <td>${rowData["parents"]}</td>
+                    <td>${rowData["total_beneficiaries"]}</td>
+                    <td>
+                        <button class="btn-edit" data-id="${
+                          rowData["id"]
+                        }">Edit</button>
+                        <button class="btn-delete" data-id="${
+                          rowData["id"]
+                        }">Delete</button>
+                    </td>
+                `;
+              tableBody.appendChild(newRow);
+            };
+
+            request.onerror = function (event) {
+              console.error("Error saving data:", event.target.error);
+            };
+
+            form.reset();
+          });
+
+          const objectStore = db
+            .transaction("activities")
+            .objectStore("activities");
+          objectStore.openCursor().onsuccess = function (event) {
+            const cursor = event.target.result;
+            if (cursor) {
+              const rowData = cursor.value;
+              const newRow = document.createElement("tr");
+              newRow.setAttribute("data-id", rowData.id);
+              newRow.innerHTML = `
+                    <td>${srNo++}</td> <!-- Displaying serial number -->
+                    <td>${rowData["date"]}</td>
+                    <td>${getThemeName(rowData["theme"])}</td>
+                    <td>${rowData["boys"]}</td>
+                    <td>${rowData["girls"]}</td>
+                    <td>${rowData["parents"]}</td>
+                    <td>${rowData["total_beneficiaries"]}</td>
+                    <td>
+                        <button class="btn-edit" data-id="${
+                          rowData["id"]
+                        }">Edit</button>
+                        <button class="btn-delete" data-id="${
+                          rowData["id"]
+                        }">Delete</button>
+                    </td>
+                `;
+              tableBody.appendChild(newRow);
+              cursor.continue();
+            }
+          };
+
+          tableBody.addEventListener("click", (e) => {
+            if (e.target.classList.contains("btn-edit")) {
+              const id = e.target.getAttribute("data-id");
+
+              const transaction = db.transaction(["activities"], "readonly");
+              const objectStore = transaction.objectStore("activities");
+              const request = objectStore.get(id);
+
+              request.onsuccess = function (event) {
+                const data = event.target.result;
+                if (data) {
+                  document.getElementById("date").value = data.date;
+                  document.getElementById("theme").value = data.theme;
+                  document.getElementById("boys").value = data.boys;
+                  document.getElementById("girls").value = data.girls;
+                  document.getElementById("parents").value = data.parents;
+                  document.getElementById("total_beneficiaries").value =
+                    data.total_beneficiaries;
+                  document.querySelector('input[type="submit"]').value =
+                    "Update";
+                  document
+                    .querySelector('input[type="submit"]')
+                    .setAttribute("data-id", id);
+                } else {
+                  console.error("Data not found");
+                }
+              };
+
+              request.onerror = function (event) {
+                console.error("Error retrieving data:", event.target.error);
+              };
+            }
+
+            if (e.target.classList.contains("btn-delete")) {
+              const id = e.target.getAttribute("data-id");
+              deleteData(id);
+              e.target.parentElement.parentElement.remove();
+            }
+          });
+        };
+
+        openDB.onerror = function (event) {
+          console.error("Error opening database:", event.target.error);
+        };
+      });
+
+      function getThemeName(themeId) {
+        const themes = {
+          1: "Tribal, Traditional, Regional, Local dietary practices focused sensitization around",
+          2: "Health of Pregnant Women and Infant & Young Child Feeding (IYCF) practices",
+          3: "Improving Nutrition through Mission LiFE #Water Conservation through Rainwater Harvestig (RWH) at AW",
+          4: "Improving Nutrition through Mission LiFE #Adopting Sustainable Food Systems by promoting Millet",
+          5: "Improving Nutrition through Mission LiFE #Adopting Healthy Lifestyles through Ayush practices etc.",
+          6: "Focused activities around Water, Sanitation and Hygiene (WaSH) and Diarrhoea management",
+          7: "Test, Treat, Talk Anaemia",
+          8: "Swasth Balak Spardha (SBS)",
+          9: "Overall Nutrition (general sensitisation activities)",
+        };
+        return themes[themeId] || "Unknown Theme";
+      }
+
+      function generateUUID() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+          /[xy]/g,
+          function (c) {
+            var r = (Math.random() * 16) | 0,
+              v = c == "x" ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+          }
+        );
+      }
+
+      // preganant women code
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("pregnant_form");
+        const tableBody = document.getElementById(
+          "pregnant_activity_table_body"
+        );
+        const openDB = indexedDB.open("PregnantWomenDB", 1);
+
+        let db;
+
+        openDB.onupgradeneeded = function () {
+          db = openDB.result;
+          if (!db.objectStoreNames.contains("activities")) {
+            db.createObjectStore("activities", {
+              keyPath: "id",
+              autoIncrement: true,
+            });
+          }
+        };
+
+        openDB.onsuccess = function () {
+          db = openDB.result;
+          fetchAndDisplayData();
+        };
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const rowData = {};
+          formData.forEach((value, key) => {
+            rowData[key] = value;
+          });
+
+          const name = `${rowData["pregnant_first_name"]} ${rowData["pregnant_middle_name"]} ${rowData["pregnant_last_name"]}`;
+          const activitiesPerformed = Array.from(
+            formData.getAll("activities[]")
+          ).join(", ");
+          const uuid = form.dataset.id;
+
+          const transaction = db.transaction(["activities"], "readwrite");
+          const objectStore = transaction.objectStore("activities");
+
+          const request = uuid
+            ? objectStore.put({ id: uuid, name, activitiesPerformed })
+            : objectStore.add({ name, activitiesPerformed });
+
+          request.onsuccess = function () {
+            if (uuid) {
+              const row = tableBody.querySelector(`[data-id="${uuid}"]`);
+              row.children[1].textContent = name;
+              row.children[2].textContent = activitiesPerformed;
+            } else {
+              const newRow = document.createElement("tr");
+              newRow.innerHTML = `
+            <td></td>
+            <td>${name}</td>
+            <td>${activitiesPerformed}</td>
+            <td>${formData.getAll("activities[]").length}</td>
+            <td>
+                <button class="edit-btn" data-id="${
+                  request.result
+                }">Edit</button>
+                <button class="delete-btn" data-id="${
+                  request.result
+                }">Delete</button>
+            </td>
+        `;
+              newRow.dataset.id = request.result;
+              tableBody.appendChild(newRow);
+              updateSerialNumbers();
+            }
+            form.reset();
+            form.querySelector('button[type="submit"]').value = "Submit";
+            form.removeAttribute("data-id");
+          };
+
+          request.onerror = function (event) {
+            console.error("Error adding data:", event.target.error);
+          };
+        });
+
+        tableBody.addEventListener("click", (e) => {
+          if (e.target.classList.contains("delete-btn")) {
+            const id = e.target.getAttribute("data-id");
+
+            const transaction = db.transaction(["activities"], "readwrite");
+            const objectStore = transaction.objectStore("activities");
+            const request = objectStore.delete(id);
+
+            request.onsuccess = function () {
+              const row = e.target.closest("tr");
+              row.remove();
+              updateSerialNumbers();
+            };
+
+            request.onerror = function (event) {
+              console.error("Error deleting data:", event.target.error);
+            };
+          }
+
+          if (e.target.classList.contains("edit-btn")) {
+            const id = e.target.getAttribute("data-id");
+            console.log("Edit button clicked. ID:", id); // Debug statement
+
+            const transaction = db.transaction(["activities"], "readwrite");
+            const objectStore = transaction.objectStore("activities");
+            const request = objectStore.get(id);
+
+            request.onsuccess = function () {
+              const data = request.result;
+              if (data) {
+                // Populate form fields with the data
+                const nameParts = data.name.split(" ");
+                form.elements["pregnant_first_name"].value = nameParts[0] || "";
+                form.elements["pregnant_middle_name"].value =
+                  nameParts[1] || "";
+                form.elements["pregnant_last_name"].value = nameParts[2] || "";
+                const activities = data.activitiesPerformed.split(", ");
+                activities.forEach((activity) => {
+                  form.elements[`activity_${activity}`].checked = true;
+                });
+                // Update the submit button to show "Update" instead of "Submit"
+                form.querySelector('button[type="submit"]').value = "Update";
+                form.setAttribute("data-id", id);
+              } else {
+                console.error("Data not found for ID:", id); // Debug statement
+              }
+            };
+
+            request.onerror = function (event) {
+              console.error("Error retrieving data:", event.target.error);
+            };
+          }
+        });
+
+        function updateSerialNumbers() {
+          const rows = tableBody.querySelectorAll("tr");
+          rows.forEach((row, index) => {
+            row.cells[0].textContent = index + 1;
+          });
+        }
+
+        function fetchAndDisplayData() {
+          const transaction = db.transaction(["activities"], "readonly");
+          const objectStore = transaction.objectStore("activities");
+          const request = objectStore.getAll();
+
+          request.onsuccess = function () {
+            const data = request.result;
+            data.forEach((entry) => {
+              const newRow = document.createElement("tr");
+              newRow.innerHTML = `
+          <td></td>
+          <td>${entry.name}</td>
+          <td>${entry.activitiesPerformed}</td>
+          <td>${entry.activitiesPerformed.split(", ").length}</td>
+          <td>
+              <button class="edit-btn" data-id="${entry.id}">Edit</button>
+              <button class="delete-btn" data-id="${entry.id}">Delete</button>
+          </td>
+        `;
+              // const editButtons = document.querySelectorAll(".edit-btn");
+              // editButtons.forEach((button) => {
+              //   button.style.backgroundColor = "green";
+              // });
+              // const deleteButtons = document.querySelectorAll(".delete-btn");
+              // deleteButtons.forEach((button) => {
+              //   button.style.backgroundColor = "red";
+              // });
+              newRow.dataset.id = entry.id;
+              tableBody.appendChild(newRow);
+            });
+            updateSerialNumbers();
+          };
+
+          request.onerror = function (event) {
+            console.error("Error fetching data:", event.target.error);
+          };
+        }
+      });
+
+      // newborn baby data
+
+      // // IndexedDB setup
+      const dbName = "newbornDB";
+      const dbVersion = 1;
+      let db;
+
+      // Function to open the database
+      function openDatabase() {
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.open(dbName, dbVersion);
+
+          request.onerror = function () {
+            console.error("Failed to open database.");
+            reject("Database error");
+          };
+
+          request.onsuccess = function () {
+            db = request.result;
+            resolve();
+          };
+
+          request.onupgradeneeded = function (event) {
+            db = event.target.result;
+            const objectStore = db.createObjectStore("newborns", {
+              keyPath: "id",
+              autoIncrement: true,
+            });
+            objectStore.createIndex("childName", [
+              "newborn_first_name",
+              "newborn_mothers_name",
+              "newborn_fathers_name",
+              "newborn_surname",
+            ]);
+          };
+        });
+      }
+
+      // Function to save data to IndexedDB
+      function saveData(data) {
+        const transaction = db.transaction(["newborns"], "readwrite");
+        const objectStore = transaction.objectStore("newborns");
+        const request = objectStore.add(data);
+        request.onsuccess = displayData;
+      }
+
+      function displayData() {
+        const objectStore = db.transaction("newborns").objectStore("newborns");
+        const tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
+        let srNo = 1;
+
+        objectStore.openCursor().onsuccess = function (event) {
+          const cursor = event.target.result;
+          if (cursor) {
+            const rowData = cursor.value;
+            const childName = `${rowData.newborn_first_name} ${rowData.newborn_mothers_name} ${rowData.newborn_fathers_name} ${rowData.newborn_surname}`;
+            const row = `
+          <tr data-id="${cursor.key}">
+              <td>${srNo}</td>
+              <td>${childName}</td>
+              <td>${rowData.newborn_date_of_birth}</td>
+              <td>${rowData.newborn_place_of_birth}</td>
+              <td>
+                  <button onclick="editData(${cursor.key})">Edit</button>
+                  <button onclick="deleteData(${cursor.key})">Delete</button>
+              </td>
+          </tr>
+        `;
+            tableBody.insertAdjacentHTML("beforeend", row);
+            srNo++;
+            cursor.continue();
+          }
+        };
+      }
+
+      function editData(id) {
+        const transaction = db.transaction(["newborns"], "readonly");
+        const objectStore = transaction.objectStore("newborns");
+        const request = objectStore.get(id);
+
+        request.onsuccess = function (event) {
+          const data = event.target.result;
+          if (data) {
+            // Populate the form with the data
+            document.getElementById("newborn_first_name").value =
+              data.newborn_first_name;
+            document.getElementById("newborn_mothers_name").value =
+              data.newborn_mothers_name;
+            document.getElementById("newborn_fathers_name").value =
+              data.newborn_fathers_name;
+            document.getElementById("newborn_surname").value =
+              data.newborn_surname;
+            document.getElementById("newborn_date_of_birth").value =
+              data.newborn_date_of_birth;
+            document.getElementById("newborn_place_of_birth").value =
+              data.newborn_place_of_birth;
+            document.getElementById("total_newborn").value = data.total_newborn;
+
+            // Change submit button value to "Update"
+            const submitButton = document.querySelector('input[type="submit"]');
+            submitButton.value = "Update";
+
+            // Add data-id attribute to submit button to store the id of the record being edited
+            submitButton.setAttribute("data-id", id);
+          } else {
+            console.error("Data not found");
+          }
+        };
+
+        request.onerror = function (event) {
+          console.error("Error retrieving data:", event.target.error);
+        };
+      }
+
+      // Function to update data in IndexedDB
+      function updateData(id, newData) {
+        const transaction = db.transaction(["newborns"], "readwrite");
+        const objectStore = transaction.objectStore("newborns");
+
+        // Use put method without providing the key parameter
+        const request = objectStore.put(newData);
+
+        request.onsuccess = function (event) {
+          console.log("Data updated successfully");
+
+          // Update the UI with the edited values
+          const updatedRow = document.querySelector(`tr[data-id="${id}"]`);
+          const childName = `${newData.newborn_first_name} ${newData.newborn_mothers_name} ${newData.newborn_fathers_name} ${newData.newborn_surname}`;
+
+          // Update only specific fields without changing the serial number
+          updatedRow.cells[1].textContent = childName;
+          updatedRow.cells[2].textContent = newData.newborn_date_of_birth;
+          updatedRow.cells[3].textContent = newData.newborn_place_of_birth;
+        };
+
+        request.onerror = function (event) {
+          console.error("Error updating data:", event.target.error);
+        };
+      }
+
+      // Function to delete data from IndexedDB
+      function deleteData(id) {
+        const transaction = db.transaction(["newborns"], "readwrite");
+        const objectStore = transaction.objectStore("newborns");
+        const request = objectStore.delete(id);
+        request.onsuccess = function () {
+          displayData();
+        };
+      }
+
+      // Event listener for form submission
+      document
+        .getElementById("newbornForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const form = event.target;
+          const formData = new FormData(form);
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+
+          const submitButton = document.querySelector('input[type="submit"]');
+          const id = submitButton.getAttribute("data-id");
+
+          if (id) {
+            // If id exists, it means it's an update operation
+            updateData(id, data);
+          } else {
+            // If id doesn't exist, it's a new record
+            saveData(data);
+          }
+
+          form.reset();
+
+          // Reset submit button value to "Submit"
+          submitButton.value = "Submit";
+          // Remove data-id attribute from submit button
+          submitButton.removeAttribute("data-id");
+        });
+
+      // Initial setup
+      openDatabase().then(displayData).catch(console.error);
+
+      // death records
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("child_death_form");
+        const tableBody = document.querySelector("#death_records tbody");
+        let childDeathDB;
+        const databaseName = "ChildDeathsDatabase";
+        const storeName = "child_deaths";
+        const databaseVersion = 1;
+        const ageDisplay = document.getElementById("age_at_death_display");
+
+        // Open or create IndexedDB database
+        const request = window.indexedDB.open(databaseName, databaseVersion);
+
+        // Handle database creation or upgrade
+        request.onupgradeneeded = function (event) {
+          childDeathDB = event.target.result;
+          const store = childDeathDB.createObjectStore(storeName, {
+            keyPath: "id",
+            autoIncrement: true,
+          });
+          store.createIndex("name", "name", { unique: false });
+          store.createIndex("dateOfBirth", "dateOfBirth", { unique: false });
+          store.createIndex("dateOfDeath", "dateOfDeath", { unique: false });
+          store.createIndex("ageAtDeath", "ageAtDeath", { unique: false });
+          store.createIndex("placeOfDeath", "placeOfDeath", { unique: false });
+          store.createIndex("reasonOfDeath", "reasonOfDeath", {
+            unique: false,
+          });
+        };
+
+        // Handle successful database connection
+        request.onsuccess = function (event) {
+          childDeathDB = event.target.result;
+          displayData();
+        };
+
+        // Handle form submission for adding/editing
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          const formData = new FormData(form);
+          const entry = {
+            name: formData.get("child_name"),
+            dateOfBirth: formData.get("date_of_birth"),
+            dateOfDeath: formData.get("date_of_death"),
+            ageAtDeath: calculateAge(
+              formData.get("date_of_birth"),
+              formData.get("date_of_death")
+            ),
+            placeOfDeath: formData.get("place_of_death"),
+            reasonOfDeath: formData.get("reason_of_death"),
+          };
+
+          if (editingEntryId === null) {
+            // Add new entry
+            saveData(entry);
+          } else {
+            // Edit existing entry
+            updateData(entry, editingEntryId);
+          }
+
+          form.reset();
+        });
+
+        // Save data to IndexedDB
+        function saveData(entry) {
+          const transaction = childDeathDB.transaction(
+            [storeName],
+            "readwrite"
+          );
+          const store = transaction.objectStore(storeName);
+          const request = store.add(entry);
+          request.onsuccess = function () {
+            displayData();
+          };
+        }
+
+        // Update data in IndexedDB
+        function updateData(entry, key) {
+          const transaction = childDeathDB.transaction(
+            [storeName],
+            "readwrite"
+          );
+          const store = transaction.objectStore(storeName);
+
+          // Ensure the key is included in the entry data
+          entry.id = key;
+
+          const request = store.put(entry); // No need to pass the key parameter here
+          request.onsuccess = function () {
+            displayData();
+            editingEntryId = null;
+          };
+        }
+
+        // Display data from IndexedDB
+        function displayData() {
+          tableBody.innerHTML = "";
+          const transaction = childDeathDB.transaction([storeName], "readonly");
+          const store = transaction.objectStore(storeName);
+          const request = store.openCursor();
+
+          let index = 1; // Initialize index for serial number
+          let totalCount = 0; // Initialize total count
+
+          request.onsuccess = function (event) {
+            const cursor = event.target.result;
+            if (cursor) {
+              const entry = cursor.value;
+              const age = entry.ageAtDeath;
+              const newRow = document.createElement("tr");
+              newRow.setAttribute("data-key", cursor.key); // Set data-key attribute
+              newRow.innerHTML = `
+                  <td>${index}</td>
+                  <td>${entry.name}</td>
+                  <td>${entry.dateOfBirth}</td>
+                  <td>${entry.dateOfDeath}</td>
+                  <td>${age.years} years, ${age.months} months, ${age.days} days</td>
+                  <td>${entry.placeOfDeath}</td>
+                  <td>${entry.reasonOfDeath}</td>
+                  <td>
+                      <button onclick="editEntry(${cursor.key})">Edit</button>
+                      <button onclick="deleteEntry(${cursor.key})">Delete</button>
+                  </td>
+              `;
+              tableBody.appendChild(newRow);
+              cursor.continue();
+
+              index++; // Increment index for next row
+              totalCount++; // Increment total count
+            } else {
+              // Add row for total count
+              const totalRow = document.createElement("tr");
+              totalRow.innerHTML = `
+                  <td colspan="8"><strong>Total Deaths:</strong> ${totalCount}</td>
+              `;
+              tableBody.appendChild(totalRow);
+            }
+          };
+        }
+
+        function deleteData(id) {
+          const transaction = db.transaction(["newborns"], "readwrite");
+          const objectStore = transaction.objectStore("newborns");
+          const request = objectStore.delete(id);
+          request.onsuccess = function () {
+            displayData();
+            // Decrement serial number when a row is deleted
+            srNo--;
+          };
+        }
+
+        // Function to calculate age at death
+        function calculateAge(dateOfBirth, dateOfDeath) {
+          const dob = new Date(dateOfBirth);
+          const dod = new Date(dateOfDeath);
+          const ageDiffMs = dod - dob;
+          const ageDate = new Date(ageDiffMs);
+          const ageYears = Math.abs(ageDate.getUTCFullYear() - 1970);
+          const ageMonths = ageDate.getUTCMonth();
+          const ageDays = ageDate.getUTCDate() - 1;
+
+          return {
+            years: ageYears,
+            months: ageMonths,
+            days: ageDays,
+          };
+        }
+
+        // Edit entry
+        window.editEntry = function (key) {
+          const transaction = childDeathDB.transaction([storeName], "readonly");
+          const store = transaction.objectStore(storeName);
+          const request = store.get(key);
+
+          request.onsuccess = function (event) {
+            const entry = event.target.result;
+            if (entry) {
+              // Populate form fields with entry data
+              document.getElementById("child_name").value = entry.name;
+              document.getElementById("date_of_birth").value =
+                entry.dateOfBirth;
+              document.getElementById("date_of_death").value =
+                entry.dateOfDeath;
+              document.getElementById("place_of_death").value =
+                entry.placeOfDeath;
+              document.getElementById("reason_of_death").value =
+                entry.reasonOfDeath;
+
+              // Calculate and display age at death
+              const age = calculateAge(entry.dateOfBirth, entry.dateOfDeath);
+              ageDisplay.textContent = `${age.years} years, ${age.months} months, ${age.days} days`;
+
+              // Set editingEntryId to track the ID of the entry being edited
+              editingEntryId = key;
+            } else {
+              console.error("Entry not found for key:", key);
+            }
+          };
+        };
+
+        // Delete entry
+        window.deleteEntry = function (key) {
+          const transaction = childDeathDB.transaction(
+            [storeName],
+            "readwrite"
+          );
+          const store = transaction.objectStore(storeName);
+          const request = store.delete(key);
+
+          request.onsuccess = function () {
+            // Remove the corresponding row from the UI
+            const rowToDelete = document.querySelector(
+              `#death_records tbody tr[data-key="${key}"]`
+            );
+            if (rowToDelete) {
+              rowToDelete.remove();
+            }
+
+            // Update serial numbers (Sr No) in the UI
+            const rows = document.querySelectorAll("#death_records tbody tr");
+            rows.forEach((row, index) => {
+              row.cells[0].textContent = index + 1;
+            });
+
+            // Update total count of deaths
+            updateTotalCount();
+
+            console.log(`Entry with key ${key} deleted successfully.`);
+          };
+
+          request.onerror = function (event) {
+            console.error("Error deleting entry:", event.target.error);
+          };
+        };
+
+        // Function to update total count of deaths
+        function updateTotalCount() {
+          const totalRow = document.querySelector(
+            "#death_records tbody tr:last-child"
+          );
+          if (totalRow) {
+            const totalCount = document.querySelectorAll(
+              "#death_records tbody tr[data-key]"
+            ).length;
+            totalRow.innerHTML = `<td colspan="8"><strong>Total Deaths:</strong> ${totalCount}</td>`;
+          }
+        }
+
+        // Define variables
+        let editingEntryId = null; // To track the ID of the entry being edited
+
+        // Listen for changes in date of birth and date of death fields
+        document
+          .getElementById("date_of_birth")
+          .addEventListener("change", calculateAgeAtDeath);
+        document
+          .getElementById("date_of_death")
+          .addEventListener("change", calculateAgeAtDeath);
+
+        function calculateAgeAtDeath() {
+          const dob = new Date(document.getElementById("date_of_birth").value);
+          const dod = new Date(document.getElementById("date_of_death").value);
+          const ageDiffMs = dod - dob;
+          const ageDate = new Date(ageDiffMs);
+          const ageYears = Math.abs(ageDate.getUTCFullYear() - 1970);
+          const ageMonths = ageDate.getUTCMonth();
+          const ageDays = ageDate.getUTCDate() - 1;
+
+          // Update age at death display in the form
+          ageDisplay.textContent = `${ageYears} years, ${ageMonths} months, ${ageDays} days`;
+        }
+      });
+    </script>
+    <!--script for footer -->
+<script>
+  window.onload = function() {
+      // Get the height of the content in footer.html
+      var iframe = document.getElementById('footerFrame');
+      var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+      var height = iframeDocument.body.scrollHeight;
+
+      // Set the height of the iframe to accommodate the content
+      iframe.style.height = height + 'px';
+  }
+</script>
+
+  </body>
+</html>

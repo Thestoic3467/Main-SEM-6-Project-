@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Details</title>
+  <style>
+    /* Basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    #profileDetails {
+      width: 600px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 60px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #profileDetails h2 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    #profileDetails label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    #date {
+      width: 40%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+    }
+    #profileNotes {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+    }
+    #saveBtn {
+        
+      background-color: #3498db;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      display: block;
+      width: 30%;
+    }
+    #saveBtn:hover {
+      background-color: #2980b9;
+    }
+    .saved-data {
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <div id="profileDetails">
+    <h2 id="profileName"></h2>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date"><br>
+    <textarea id="profileNotes" placeholder="Enter notes"></textarea><br>
+    <button id="saveBtn">Save</button>
+    <div id="savedData" class="saved-data"></div>
+  </div>
+
+  <script>
+    // Get current profile from local storage
+    var currentProfileName = localStorage.getItem('currentProfile');
+
+    // Display current profile name in bold
+    document.getElementById('profileName').textContent = currentProfileName;
+
+    // Function to handle save button click
+    document.getElementById('saveBtn').addEventListener('click', function() {
+      var date = document.getElementById('date').value;
+      var notes = document.getElementById('profileNotes').value;
+
+      // Save notes and date to local storage
+      var profileData = JSON.parse(localStorage.getItem(currentProfileName)) || {};
+      profileData.date = date;
+      profileData.notes = notes;
+      localStorage.setItem(currentProfileName, JSON.stringify(profileData));
+
+      // Show saved data on the UI
+      displaySavedData(date, notes);
+    });
+
+    // Function to display saved data on the UI
+    function displaySavedData(date, notes) {
+      // Display saved data below the text area
+      var savedDataDisplay = document.createElement('div');
+      savedDataDisplay.textContent = date + ': ' + notes;
+      document.getElementById('savedData').appendChild(savedDataDisplay);
+    }
+
+    // Load saved data if any
+    var profileData = JSON.parse(localStorage.getItem(currentProfileName));
+    if (profileData && profileData.date && profileData.notes) {
+      displaySavedData(profileData.date, profileData.notes);
+    }
+  </script>
+</body>
+</html>

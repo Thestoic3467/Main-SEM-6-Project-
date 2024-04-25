@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Authentication</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #2c3e50; /* Updated background color */
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #authContainer {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #authContainer:hover {
+      transform: scale(1.05);
+    }
+
+    form {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #ecf0f1; /* Added background color */
+      border-radius: 8px;
+    }
+
+    h2 {
+      text-align: center;
+      padding: 20px;
+      background-color: #3498db; /* Header background color */
+      color: #fff;
+      border-radius: 8px 8px 0 0; /* Rounded corners only at the top */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #2c3e50; /* Updated label color */
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      display: inline-block;
+      border: 1px solid #bdc3c7; /* Added border */
+      border-radius: 4px;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .view-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 1.2em;
+      color: #3498db;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .social-icons img:hover {
+      background-color: #ecf0f1; /* Highlight on hover */
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #2ecc71; /* Updated button color */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #27ae60; /* Darker green on hover */
+    }
+
+    p {
+      margin-top: 16px;
+      text-align: center;
+      color: #7f8c8d; /* Subdued text color */
+    }
+
+    a {
+      color: #3498db;
+      cursor: pointer;
+    }
+
+    #loggedInContent {
+      text-align: center;
+      background-color: #2ecc71; /* Updated background color */
+      color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="authContainer">
+    <div id="loginForm">
+      <h2>Sign In</h2>
+      <form id="signInForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="password" class="password-container">Password:
+          <input type="password" id="password" required>
+          <i class="view-icon" onclick="togglePassword()">👁️</i>
+        </label>
+        <button type="button" onclick="signIn()">Sign In</button>
+        <p id="loginMessage"></p>
+        <div class="social-icons">
+          <img src="images/google.png" alt="Google" onclick="signInWithGoogle()">
+          <img src="images/fb.jpg" alt="Facebook" onclick="signInWithFacebook()" >
+          <img src="images/twitter.png" alt="Twitter" onclick="signInWithTwitter()">
+        </div>
+        <p>Don't have an account? <a href="#" onclick="showSignUpForm()">Sign Up</a></p>
+      </form>
+    </div>
+
+    <div id="signupForm" style="display: none;">
+      <h2>Sign Up</h2>
+      <form id="signUpForm">
+        <label for="newUsername">New Username:</label>
+        <input type="text" id="newUsername" required>
+        <label for="newPassword" class="password-container">New Password:
+          <input type="password" id="newPassword" required>
+          <i class="view-icon" onclick="toggleNewPassword()">👁️</i>
+        </label>
+        <button type="button" onclick="signUp()">Sign Up</button>
+        <p id="signupMessage"></p>
+        <div class="social-icons">
+          <img src="images/google.png" alt="Google" onclick="signUpWithGoogle()">
+          <img src="images/fb.jpg" alt="Facebook" onclick="signUpWithFacebook()">
+          <img src="images/twitter.png" alt="Twitter" onclick="signUpWithTwitter()">
+        </div>
+        <p>Already have an account? <a href="#" onclick="showSignInForm()">Sign In</a></p>
+      </form>
+    </div>
+
+    <div id="loggedInContent" style="display: none;">
+      <h2>Welcome, <span id="loggedInUser"></span>!</h2>
+      <p>This is a protected page.</p>
+      <button onclick="logOut()">Log Out</button>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      var passwordInput = document.getElementById('password');
+      passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    }
+
+    function toggleNewPassword() {
+      var newPasswordInput = document.getElementById('newPassword');
+      newPasswordInput.type = newPasswordInput.type === 'password' ? 'text' : 'password';
+    }
+
+    function signIn() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      var storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+      var user = storedUsers.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        document.getElementById('loginMessage').innerText = 'Login successful.';
+        // Redirect to the landing page after successful login
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('loginMessage').innerText = 'Invalid username or password.';
+      }
+    }
+
+    function signUp() {
+      var newUsername = document.getElementById('newUsername').value;
+      var newPassword = document.getElementById('newPassword').value;
+
+      var storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+      if (storedUsers.some(u => u.username === newUsername)) {
+        document.getElementById('signupMessage').innerText = 'Username already exists. Please choose a different one.';
+      } else {
+        storedUsers.push({ username: newUsername, password: newPassword });
+        localStorage.setItem('users', JSON.stringify(storedUsers));
+        document.getElementById('signupMessage').innerText = 'Account created successfully. You can now sign in.';
+      }
+    }
+
+    function logOut() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loggedInContent').style.display = 'none';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+
+    function showSignUpForm() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('loggedInContent').style.display = 'none';
+    }
+
+    function showSignInForm() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loggedInContent').style.display = 'none';
+    }
+
+    // Dummy functions for social sign-in/sign-up
+    function signInWithGoogle() {
+      alert('Sign in with Google');
+    }
+
+    function signInWithFacebook() {
+      alert('Sign in with Facebook');
+    }
+
+    function signInWithTwitter() {
+      alert('Sign in with Twitter');
+    }
+
+    function signUpWithGoogle() {
+      alert('Sign up with Google');
+    }
+
+    function signUpWithFacebook() {
+      alert('Sign up with Facebook');
+    }
+
+    function signUpWithTwitter() {
+      alert('Sign up with Twitter');
+    }
+  </script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCP News App</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <style>
+        /* General Styles */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-text-color: #183b56;
+            --secondary-text-color: #577592;
+            --accent-color: #2294ed;
+            --accent-color-dark: #f81010;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            /* Use Roboto font for the entire body */
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            padding-top: 100px;
+            /* Add padding to the top */
+            /* Add padding to the top */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        nav {
+            background-color: #f3fbff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            overflow: hidden;
+            /* Ensure content within the header does not overflow */
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .company-logo img {
+            width: 50px;
+        }
+
+        .nav-links ul {
+            display: flex;
+            gap: 16px;
+        }
+
+        .nav-links a {
+            color: var(--primary-text-color);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding-top: 100px;
+            /* Ensure content does not get hidden behind the header */
+        }
+
+        /* Footer Styles */
+        footer {
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+
+        /* Iframe Styles */
+        iframe {
+            width: 100%;
+            /* Ensure iframes fill their container */
+            height: 100%;
+            /* Ensure iframes fill their container */
+            border: none;
+            /* Remove iframe border */
+        }
+
+        /* Card Styles */
+        .card {
+            box-shadow: 0 0 4px #d4ecff;
+            border-radius: 4px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 1px 1px 8px #d4ecff;
+            transform: translateY(-2px);
+        }
+
+        .card .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: var(--secondary-text-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 8px 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            /* Use Roboto font for buttons */
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color-dark);
+        }
+
+        h2,
+        .card-title {
+            font-family: 'Roboto', sans-serif;
+            /* Use Roboto font for headings */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container main-nav">
+            <!-- Include the header.html using iframe -->
+            <iframe id="headerFrame" src="header.html" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- News Cards Section -->
+            <h2 class="text-center mb-4">News Updates Section</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Recruitment / Vacancies</h5>
+                            <p class="card-text">Visit this link to view latest Recruitment news</p>
+                            <a href="https://wcd.nic.in/archive-notification/2319" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Schemes</h5>
+                            <p class="card-text">Visit this link to view all the Schemes introduced by ICDS</p>
+                            <a href="https://icds.gov.in/Forms/Schemes.aspx" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Latest news</h5>
+                            <p class="card-text">Visit this link to view latest news</p>
+                            <a href="https://icds.gov.in/Forms/View_News.aspx" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Meetings / Events</h5>
+                            <p class="card-text">Visit this link to view latest Events news</p>
+                            <a href="https://wcd.nic.in/archive-notification/2317" target="_blank"
+                                class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Annual Reports</h5>
+                            <p class="card-text">Visit this link to view latest Recruitment news</p>
+                            <a href="https://wcd.nic.in/annual-report" target="_blank" class="btn btn-primary">Read
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tenders</h5>
+                            <p class="card-text">Visit this link to view latest Events news</p>
+                            <a href="https://wcd.nic.in/past-tenders" target="_blank" class="btn btn-primary">Read
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!-- final code -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 1rem;
+        padding: 1rem;
+      }
+      #sidebar {
+        width: 300px;
+        background-color: #2c3e50;
+        border-radius: 1rem;
+        padding: 20px;
+        color: #ffffff;
+      }
+      #createProfileBtn {
+        background-color: #3498db;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      #profileForm {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      label {
+        color: #2c3e50;
+      }
+      input[type="text"] {
+        width: calc(100% - 40px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+      }
+      button[type="submit"] {
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="createProfileBtn">Create Profile</button>
+
+    <div id="profileForm" style="display: none">
+      <form id="userForm">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+        <label for="phoneNumber">Phone Number:</label><br />
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          required
+        /><br /><br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div id="sidebar">
+      <h2>Preganant Women Profile</h2>
+      <ul id="profileList"></ul>
+    </div>
+
+    <script>
+      // Function to show the profile form
+      document
+        .getElementById("createProfileBtn")
+        .addEventListener("click", function () {
+          document.getElementById("profileForm").style.display = "block";
+        });
+
+      // Function to handle form submission
+      document
+        .getElementById("userForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          var name = document.getElementById("name").value;
+          var phoneNumber = document.getElementById("phoneNumber").value;
+
+          // Create profile object
+          var profile = {
+            name: name,
+            phoneNumber: phoneNumber,
+          };
+
+          // Add profile to sidebar and store in local storage
+          addProfile(profile);
+
+          // Clear form inputs
+          document.getElementById("userForm").reset();
+        });
+
+      // Function to add profile to sidebar and local storage
+      function addProfile(profile) {
+        var profileList = document.getElementById("profileList");
+        var existingProfile = document.querySelector(
+          '#profileList li[data-name="' + profile.name + '"]'
+        );
+        if (!existingProfile) {
+          var profileItem = document.createElement("li");
+          profileItem.textContent = profile.name;
+          profileItem.setAttribute("data-name", profile.name); // Add data attribute to identify profile by name
+          profileList.appendChild(profileItem);
+
+          // Store profile in local storage
+          var profiles = JSON.parse(localStorage.getItem("profiles")) || [];
+          profiles.push(profile);
+          localStorage.setItem("profiles", JSON.stringify(profiles));
+        }
+      }
+
+      // Function to load profiles from local storage and add to sidebar
+      function loadProfiles() {
+        var profileList = document.getElementById("profileList");
+        profileList.innerHTML = ""; // Clear sidebar
+
+        var profiles = JSON.parse(localStorage.getItem("profiles")) || [];
+        profiles.forEach(function (profile) {
+          addProfile(profile);
+        });
+      }
+
+      // Function to handle profile click event
+      function handleProfileClick(event) {
+        var clickedProfileName = event.target.getAttribute("data-name");
+        if (clickedProfileName) {
+          localStorage.setItem("currentProfile", clickedProfileName);
+          window.location.href = "profile_details.html";
+        }
+      }
+
+      // Add event listener to profile names in the sidebar
+      document
+        .getElementById("sidebar")
+        .addEventListener("click", handleProfileClick);
+
+      // Load profiles from local storage on page load
+      window.addEventListener("load", loadProfiles);
+    </script>
+  </body>
+</html>
