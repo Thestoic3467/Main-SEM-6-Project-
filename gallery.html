@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-
-    <!-- magnific-popup css cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <title>Anganwadi Events Gallery</title>
 
     <!-- Bootstrap CSS CDN link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
+    <!-- Custom CSS -->
     <style>
         /* Navbar styles */
         nav {
@@ -21,17 +18,15 @@
             display: flex;
             justify-content: space-around;
             padding: 14px;
-            flex-wrap: inherit;
-            /* Allowing navigation items to wrap to the next line on small screens */
+            flex-wrap: wrap;
         }
 
         nav a {
             text-decoration: none;
             padding: 10px;
             cursor: pointer;
-            white-space: nowrap;
-            /* Preventing navigation items from wrapping */
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
         .button {
@@ -72,15 +67,10 @@
         }
 
         /* Media Queries for Responsive Design */
-
         @media only screen and (max-width: 768px) {
-            header {
+            nav {
                 flex-direction: column;
                 align-items: center;
-            }
-
-            #datetime {
-                margin: 10px 0;
             }
 
             .social-icons {
@@ -88,295 +78,80 @@
                 align-items: center;
                 margin-top: 10px;
             }
-
-            .social-icons a {
-                margin: 5px 0;
-            }
-
-            section {
-                padding: 10px;
-            }
         }
 
-        nav {
-            background-color: #0C0A3E;
-            overflow: hidden;
-            transition: background-color 0.3s;
-        }
-
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: orange;
-        }
-
-        nav a.active {
-            background-color: rgb(255, 119, 0);
-        }
-
-        nav a::after {
-            content: '';
-            display: block;
-            border-bottom: 3px solid transparent;
-            transition: border-bottom 0.3s;
-        }
-
-        nav a.active::after,
-        nav a:hover::after {
-            border-bottom: 3px solid white;
-        }
-
-        .icon {
-            display: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            background-color: orange;
-            /* Background color for the hamburger icon */
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        @media screen and (max-width: 600px) {
-            nav {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                position: relative;
-            }
-
-            .icon {
-                display: block;
-                position: absolute;
-                top: 150px;
-                right: 10px;
-            }
-
-            nav a {
-                float: none;
-                display: block;
-                text-align: left;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            nav.show {
-                display: flex;
-            }
-
-            nav.show {
-                background-color: #0C0A3E;
-                /* Background color when the navigation menu is toggled */
-            }
-        }
-
-        /*heading navbar css*/
-        .nb2 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #333;
-            color: gold;
-            font-size: 15px;
-        }
-
-        .logo {
-            max-width: 100px;
-            height: auto;
-            position: sticky;
-        }
-
-        @media (max-width: 768px) {
-            .nb2 {
-                flex-direction: column;
-                text-align: center;
-                font-size: 13px;
-            }
-
-            @media (max-width: 550px) {
-                .nb2 {
-                    flex-direction: column;
-                    text-align: center;
-                    font-size: 8px;
-                }
-            }
-
-            @media (max-width: 300px) {
-                .nb2 {
-                    flex-direction: column;
-                    text-align: center;
-                    font-size: 7px;
-                }
-            }
-
-            @media (max-width: 400px) {
-                .nb2 {
-                    flex-direction: column;
-                    text-align: center;
-                    font-size: 4px;
-                }
-            }
-
-            /* .logo {
-margin-top: 10px;
-}*/
-        }
-
-        /*animation on ag*/
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animated-text {
-            display: inline-block;
-            color: gold;
-            font-size: 24px;
-        }
-
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-            text-transform: capitalize;
-            transition: all .2s cubic-bezier(.34, 1.12, .68, 1.31);
-        }
-
+        /* Gallery styles */
         .gallery {
             min-height: 100vh;
             background: #eee;
             padding-bottom: 100px;
         }
 
-        .gallery .controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 20px 0;
-            list-style: none;
-        }
-
-        .gallery .controls .buttons {
-            height: 40px;
-            width: 140px;
-            background: #fff;
-            color: #666;
-            font-size: 20px;
-            line-height: 40px;
-            cursor: pointer;
-            margin: 20px;
-            box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-            text-align: center;
-        }
-
-        .gallery .controls .buttons.active {
-            background: coral;
-            color: #fff;
-        }
-
         .gallery .image-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .gallery .image-container .image {
-            height: 250px;
-            width: 350px;
+            flex: 0 0 calc(33.33% - 20px);
+            margin: 10px;
             overflow: hidden;
-            border: 15px solid #fff;
+            border-radius: 8px;
             box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-            margin: 20px;
+            transition: transform 0.3s ease;
         }
 
         .gallery .image-container .image img {
-            height: 100%;
             width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
-        .gallery .image-container .image:hover img {
-            transform: scale(1.4);
+        .gallery .image-container .image:hover {
+            transform: scale(1.05);
         }
 
-        .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        /* Select styles */
+        .input-group {
+            margin-bottom: 20px;
         }
 
-        .card-body {
-            flex: 1;
-        }
-
-        .card-text {
-            margin-top: auto;
-            /* Push the district and date to the bottom */
-        }
-
-        .card-text p {
-            margin-bottom: 5px;
-            /* Add some spacing between district and date */
-        }
-
+        /* Card styles */
         .card {
             border: 1px solid #ccc;
             border-radius: 8px;
-            padding: 5px;
-            margin: 0px;
-            width: 340px;
-            /* Adjust width as needed */
+            overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .card img {
             width: 100%;
-            /* Set width to 100% to ensure images fit within the card */
             height: 200px;
-            /* Set a fixed height for all images */
             object-fit: cover;
-            /* Maintain aspect ratio and cover the entire space */
-            border-radius: 8px;
-            /* Add border radius for rounded corners */
+            border-radius: 8px 8px 0 0;
         }
 
-        .card .description {
-            font-size: 16px;
-            line-height: 1.5;
-            /* Adjust line height as needed */
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-text {
+            margin-bottom: 10px;
+        }
+
+        .card-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .description {
+            max-height: 60px;
             overflow: hidden;
-            max-height: 90px;
-            /* Set initial max height */
             transition: max-height 0.3s ease;
         }
 
         .card:hover .description {
-            max-height: 600px;
-            /* Set max height to accommodate more lines */
+            max-height: 150px;
         }
 
         iframe {
@@ -390,51 +165,27 @@ margin-top: 10px;
 </head>
 
 <body>
-    <!-- Include the header.html using iframe -->
     <iframe id="headerFrame" src="header.html" frameborder="0" scrolling="no"></iframe>
 
     <div class="container my-3">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2 class="text-center mb-4">Anganwadi Events Gallery</h2>
+        <h2 class="text-center mb-4">Anganwadi Events Gallery</h2>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="districtSelect">Choose District</label>
             </div>
-        </div>
-    </div>
-    <div class="container my-3">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="districtSelect">Choose District</label>
-                    </div>
-                    <select class="custom-select" id="districtSelect">
-                        <option value="all">All Districts</option>
-                        <option value="Mumbai">Mumbai</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Ahmednagar">Ahmednagar</option>
-                        <option value="Akola">Akola</option>
-                        <option value="Amravati">Amravati</option>
-                        <option value="Aurangabad">Aurangabad</option>
-                        <option value="Beed">Beed</option>
-                        <option value="Bhandara">Bhandara</option>
-                        <option value="Buldhana">Buldhana</option>
-                        <option value="Chandrapur">Chandrapur</option>
-                        <option value="Dhule">Dhule</option>
-                        <option value="Gadchiroli">Gadchiroli</option>
-                        <option value="Gondia">Gondia</option>
-                        <option value="Hingoli">Hingoli</option>
-                        <option value="Jalgaon">Jalgaon</option>
-                        <option value="Jalna">Jalna</option>
-                        <option value="Kolhapur">Kolhapur</option>
-                        <!-- Add more options for other districts -->
-                    </select>
-                </div>
-            </div>
+            <select class="custom-select" id="districtSelect">
+                <option value="all">All Districts</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+                <option value="Ahmednagar">Ahmednagar</option>
+                <option value="Akola">Akola</option>
+                <!-- Add more options for other districts -->
+            </select>
         </div>
     </div>
 
     <div class="container">
-        <div class="row" id="imageContainer">
+        <div class="row image-container" id="imageContainer">
             <!-- Images will be dynamically added here -->
         </div>
     </div>
@@ -443,9 +194,6 @@ margin-top: 10px;
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- magnific-popup JS CDN link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -464,7 +212,18 @@ margin-top: 10px;
                     { description: 'Empowering Change agents', imageUrl: 'https://i.kinja-img.com/image/upload/c_fill,h_900,q_60,w_1600/2b84a2ddb791338aaccbd4f86d9fea6b.jpg', date: 'August 8, 2016' },
                     { description: 'Renovation of an Anganwadi Centre', imageUrl: 'https://d1ns4ht6ytuzzo.cloudfront.net/oxfamdata/oxfamdatapublic/styles/news_detail_748x373/public/2023-04/WhatsApp%20Image%202023-04-17%20at%201.43.18%20PM_0.jpeg?nI9k1d51rrMxNorceYytLa4u50ZVuB4V&itok=QnoKsFSl', date: 'February 20, 2024' },
 
-                ]
+                ],
+                'Ahmednagar': [
+                    { description: 'Students engaging in group activities to enhance collaborative skills', imageUrl: 'https://w.ndtvimg.com/sites/3/2023/04/25173059/anganwadi-centre-delhi.jpg', date: 'June 5, 2023' },
+                    { description: 'ECCE Day', imageUrl: 'https://scontent.fbom3-1.fna.fbcdn.net/v/t1.6435-9/70764567_128652405170684_8390463859663568896_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FanO7Vs1StAAb54aUBz&_nc_ht=scontent.fbom3-1.fna&oh=00_AfDo4Fi90LJNZmeWTlOSHxBnAOSF7Fs3zu5j5NM4uFs_rA&oe=664D6E4E', date: 'August 8, 2023' },
+                    { description: 'Renovation model', imageUrl: 'https://media.assettype.com/knocksense%2F2022-06%2Fd78bbd16-8a0f-419b-a50b-bf5f6aafe7d2%2FAEFF1D59_DB7A_454C_9C89_D897AE89B836.jpeg', date: 'October 3, 2023' },
+                    { description: 'Distribution of essentials for children', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPWMTCv_EX4tFGXkueiexaM1lE_Tfcg8ZHGcoju18OZQ&s', date: ' December 7, 2023' },
+
+                ],
+                'Akola': [
+                    { description: "Anganwadi Sevika Inspiring Young Minds: A Vibrant Canvas of Learning", imageUrl: 'https://indiaeducationdiary.in/wp-content/uploads/2020/07/UN0157904.jpg', date: ' May 12, 2023' },
+                    { description: 'ECCE Day', imageUrl: 'https://scontent.fbom3-2.fna.fbcdn.net/v/t1.6435-9/70447943_128652391837352_7266433784013127680_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=yvow0ocMQksAb58ieHo&_nc_ht=scontent.fbom3-2.fna&oh=00_AfAUdirdraEXbyJJkHbFAIZZCZ_qwl4zy_yCzwX6ML_4DQ&oe=664D6253', date: 'August 8, 2023' },
+                ],
 
             };
 
